@@ -15,7 +15,34 @@ body { margin: 0; padding: 0; }
 <body>
 <div id="map"></div>
 
-<script src="map.js"></script>
+<!-- <script src="map.js"></script> -->
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmxvaGF0MzIiLCJhIjoiY2o1aWhnaXhjMXh6bzMzb2RlamR5N3lxZCJ9.wu2JL5mP4H5eFeDxpmrxNQ';
+    
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [-1.32, 46.12], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+
+    // create a marker for the fish's location
+    const fishMarker = new mapboxgl.Marker()
+        .setLngLat([-1.32, 46.12]) // set the marker's position
+        .addTo(map); // add the marker to the map
+
+    // create a popup for the marker
+    const fishPopup = new mapboxgl.Popup({
+        position: 'top-right', // set the popup's position
+        anchor: 'right' // set the popup's anchor
+    })
+        .setHTML('<h1>Fish!</h1>') // set the popup's HTML content
+        .addTo(map); // add the popup to the map
+
+    // set the marker's popup
+    fishMarker.setPopup(fishPopup);
+</script>
 
 </body>
 </html>
