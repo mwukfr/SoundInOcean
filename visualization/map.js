@@ -114,3 +114,16 @@ map.on("idle", () => {
     layers.appendChild(link);
   }
 });
+// create a marker for the whales's location
+const whaleMarker = new mapboxgl.Marker()
+    .setLngLat([-1.32, 46.13]) // set the marker's position
+    .addTo(map); // add the marker to the map
+
+// listen for clicks on the whale marker
+whaleMarker.on('click', function() {
+    // when the marker is clicked, add some data to the "sound-effect" div
+    document.getElementById('sound-effect').innerHTML = '<b>Lorem Ipsum</b>';
+})
+    
+
+
