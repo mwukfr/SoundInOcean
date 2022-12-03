@@ -6,7 +6,7 @@ const map = new mapboxgl.Map({
   // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
   style: "mapbox://styles/mapbox/streets-v12", // style URL
   center: [-1.32, 46.12], // starting position [lng, lat]
-  zoom: 9, // starting zoom
+  zoom: 11, // starting zoom
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -20,6 +20,42 @@ toggle.addEventListener("click", function () {
   sidebar.classList.toggle("show-sidebar");
   console.log("Button clicked");
 });
+
+
+/*/ create a marker for the whales's location
+const whaleMarker = new mapboxgl.Marker()
+    .setLngLat([-1.32, 46.13]) // set the marker's position
+    .addTo(map); // add the marker to the map
+
+// listen for clicks on the whale marker
+whaleMarker.on('click', function() {
+    // when the marker is clicked, add some data to the div that has "sound-effect" as an id
+    console.log("Whale clicked");
+    //document.getElementById('markerInfo').innerHTML = "Whale sound";
+    document.querySelector('#markerInfo').innerHTML = 'Hello, I am a whale!';
+})
+*/
+
+
+// Create a marker and set its coordinates.
+const whaleMarker = new mapboxgl.Marker()
+  .setLngLat([-1.32, 46.12])
+  .addTo(map)
+  .on('click', function() {
+    document.getElementById('markerInfo').innerHTML = "Whale sound";
+  });
+
+
+/* POPUP
+// Create a popup and set its content.
+const popup = new mapboxgl.Popup()
+  .setHTML("<p>Hello World!</p>")
+  .addTo(map);
+
+// Set the marker's popup.
+whaleMarker.setPopup(popup);
+*/
+
 
 map.on("load", () => {
   // Add a custom vector tileset source. This tileset contains
@@ -114,16 +150,3 @@ map.on("idle", () => {
     layers.appendChild(link);
   }
 });
-// create a marker for the whales's location
-const whaleMarker = new mapboxgl.Marker()
-    .setLngLat([-1.32, 46.13]) // set the marker's position
-    .addTo(map); // add the marker to the map
-
-// listen for clicks on the whale marker
-whaleMarker.on('click', function() {
-    // when the marker is clicked, add some data to the "sound-effect" div
-    document.getElementById('sound-effect').innerHTML = '<b>Lorem Ipsum</b>';
-})
-    
-
-

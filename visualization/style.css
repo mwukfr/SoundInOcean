@@ -15,26 +15,6 @@ body {
   display: none;
 }
 
-#map {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  flex: 6 0 60%;
-  max-width: 60%;
-}
-
-@media screen and (min-width: 1200px) {
-  #map {
-    position: absolute;
-    top: 0;
-    right: 20%;
-    bottom: 0;
-    width: 100%;
-  }
-}
-
 .toggle-sidebar {
   position: absolute;
   z-index: 2;
@@ -101,28 +81,85 @@ body {
   background: #3074a4;
 }
 
-#text-container {
+#container {
+    display: flex;
+}
+
+#right-container {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   width: 100%;
-  flex: 4 0 40%;
-  max-width: 40%;
+  flex: 3 0 30%;
+  max-width: 30%;
   display: flex;
   flex-direction: column;
 }
-#container {
-  display: flex;
+
+#left-container {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    flex: 7 0 70%;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
 }
-#text-container > div:first-child {
+
+#left-container > div:first-child {
+    /* This element should take up 95% of the container's height */
+    flex: 0.1 0 1%;
+    border-bottom: 1px solid #ccc;
+}
+#left-container > div:last-child {
+    /* This element should take up the remaining 5% of the container's height */
+    flex: 9.9 0 99%;
+}
+
+#right-container > div:first-child {
   /* This element should take up 60% of the container's height */
   flex: 6 0 60%;
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
 }
-#text-container > div:last-child {
+#right-container > div:last-child {
   /* This element should take up the remaining 40% of the container's height */
   flex: 4 0 40%;
   border-left: 1px solid #ccc;
+}
+
+button {
+    /* Use a consistent font, color, and size for all buttons */
+    font-family: sans-serif;
+    color: #333;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+/* Use a button-specific class to style the buttons */
+button.nice-button {
+    /* Set the button's background color and add some padding */
+    background-color: #eee;
+    padding: 10px 20px;
+}
+/* Use the :hover and :active pseudo-classes to add hover and active styles */
+nice-button:hover {
+background-color: #ddd;
+}
+nice-button:active {
+background-color: #ccc;
+}
+
+#about-CriQUIET {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-us-column {
+  flex: 1;
 }
