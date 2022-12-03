@@ -14,11 +14,17 @@ map.addControl(new mapboxgl.NavigationControl());
 var toggle = document.querySelector(".toggle-sidebar");
 var sidebar = document.querySelector(".sidebar");
 
-console.log(toggle);
+var toggleFirstTheme = document.querySelector(".toggle-first-theme");
+var firstTheme = document.querySelector(".first-theme");
 
 toggle.addEventListener("click", function () {
   sidebar.classList.toggle("show-sidebar");
-  console.log("Button clicked");
+  toggle.classList.toggle("click-toggle");
+});
+
+toggleFirstTheme.addEventListener("click", function () {
+  firstTheme.classList.toggle("show-first-theme");
+  toggleFirstTheme.classList.toggle("click-toggle-theme");
 });
 
 map.on("load", () => {
@@ -59,7 +65,7 @@ map.on("load", () => {
   });
 
   map.addLayer({
-    id: "my-geojson-layer",
+    id: "points",
     type: "circle",
     source: "my-geojson-file",
     paint: {
@@ -71,12 +77,12 @@ map.on("load", () => {
 // After the last frame rendered before the map enters an "idle" state.
 map.on("idle", () => {
   // If these two layers were not added to the map, abort
-  if (!map.getLayer("contours") || !map.getLayer("my-geojson-layer")) {
+  if (!map.getLayer("contours") || !map.getLayer("points")) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ["contours", "my-geojson-layer"];
+  const toggleableLayerIds = ["contours", "points"];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
