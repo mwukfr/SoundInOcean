@@ -1,6 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+html,body,#container,#map {
+  height:100%;
+  min-height:100%;
+  max-height:100%;
 }
 
 html,body,#container,#map {
@@ -10,12 +18,11 @@ html,body,#container,#map {
 }
 
 #logo {
-  background-color: white;
+  background-color: #F4F2F2;
   border-bottom-right-radius: 60%;
   max-width: 7em;
   position: absolute;
   z-index: 1;
-  filter: drop-shadow(1px 1px 1px white);
 }
 
 #logoSidebar {
@@ -26,14 +33,12 @@ html,body,#container,#map {
 }
 
 h3 {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
   text-align: center;
 }
 
 h4 {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
   font-size: large;
   padding-left: 10px;
 }
@@ -55,7 +60,7 @@ nav {
 .sidebar {
   width: 150px;
   z-index: 2;
-  background-color: #eee;
+  background-color: #F4F2F2;
   position: fixed;
   left: 0;
   top: 0;
@@ -147,6 +152,12 @@ nav {
 .mapboxgl-ctrl-top-right {
   display: none;
 }
+
+#container {
+  display: flex;
+  flex-direction: column;
+}
+
 
 #container {
   display: flex;
@@ -250,7 +261,6 @@ nice-button:active {
 /* Page a propos */
 #first-section-propos {
   background-image: url("../img/wallpaper_hackathon.jpg");
-  height: 80%;
   width: 70%;
   display: flex;
   justify-content: center;
@@ -269,8 +279,7 @@ h1 {
   padding-top: 50px;
   font-weight: bold;
   text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
 }
 
 h2 {
@@ -279,8 +288,7 @@ h2 {
   padding-top: 50px;
   font-weight: bold;
   text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
 }
 
 #first-section-propos-content h2 {
@@ -292,8 +300,7 @@ h2 {
 #first-section-propos-content, #second-section-propos-content p {
   color: white;
   font-size: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
 }
 
 .grid-item:nth-of-type(2), .grid-item:nth-of-type(3) {
@@ -313,7 +320,6 @@ h2 {
 
 #second-section-propos {
   background-color: #0077b6;
-  height: 80%;
   width: 70%;
   display: flex;
   justify-content: center;
@@ -348,7 +354,6 @@ h2 {
 
 #second-section-contributions{
   background-color: #0077b6;
-  height: 80%;
   width: 70%;
   display: flex;
   justify-content: center;
