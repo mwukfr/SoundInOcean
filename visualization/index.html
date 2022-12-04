@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>SoundInOcean</title>
+    <link rel="shortcut icon" href="../img/deSEAbel.png" />
+    <title>
+      SoundInOcean</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta
       name="viewport"
@@ -29,14 +31,34 @@
         <h3>Données thématiques</h3>
         <div class="toggle-first-theme">
           <!-- <i class="fas fa-building"></i> -->
-          <h4>First theme</h3>
+          <h4>Animaux</h4>
+          <i class="fas fa-fish"></i>
         </div>
         <nav class="first-theme" id="menu"></nav>
+        <img id="logoSidebar" src="../img/deSEAbel.png" />
       </div>
-      <div id="map"></div>
-      <div id="text-container">
+
+      <img id="logo" src="../img/deSEAbel.png" />
+      <div id="left-container">
+        <div id="navbar" style="text-align: center">
+          <button class="nice-button" onclick="window.location='index.html';">
+            APPLICATION
+          </button>
+          <button class="nice-button" onclick="window.location='about.html';">
+            À PROPOS
+          </button>
+          <button class="nice-button" onclick="window.location='team.html';">
+            L'ÉQUIPE
+          </button>
+        </div>
+
+        <div id="map"></div>
+      </div>
+
+      <div id="right-container">
         <div id="sound-effect">
-          <b>Lorem Ipsum</b>
+          <p>Coucou</p>
+          <p id="markerInfo"></p>
         </div>
         <div id="recommendations">
           <b>Lorem Lucas Ipsum</b>

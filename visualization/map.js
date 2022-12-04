@@ -6,7 +6,7 @@ const map = new mapboxgl.Map({
   // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
   style: "mapbox://styles/mapbox/streets-v12", // style URL
   center: [-1.32, 46.12], // starting position [lng, lat]
-  zoom: 9, // starting zoom
+  zoom: 11, // starting zoom
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -27,6 +27,38 @@ toggleFirstTheme.addEventListener("click", function () {
   toggleFirstTheme.classList.toggle("click-toggle-theme");
 });
 
+/*/ create a marker for the whales's location
+const whaleMarker = new mapboxgl.Marker()
+    .setLngLat([-1.32, 46.13]) // set the marker's position
+    .addTo(map); // add the marker to the map
+
+// listen for clicks on the whale marker
+whaleMarker.on('click', function() {
+    // when the marker is clicked, add some data to the div that has "sound-effect" as an id
+    console.log("Whale clicked");
+    //document.getElementById('markerInfo').innerHTML = "Whale sound";
+    document.querySelector('#markerInfo').innerHTML = 'Hello, I am a whale!';
+})
+*/
+
+// Create a marker and set its coordinates.
+const whaleMarker = new mapboxgl.Marker()
+  .setLngLat([-1.32, 46.12])
+  .addTo(map)
+  .on("click", function () {
+    document.getElementById("markerInfo").innerHTML = "Whale sound";
+  });
+
+/* POPUP
+// Create a popup and set its content.
+const popup = new mapboxgl.Popup()
+  .setHTML("<p>Hello World!</p>")
+  .addTo(map);
+
+// Set the marker's popup.
+whaleMarker.setPopup(popup);
+*/
+
 map.on("load", () => {
   // Add a custom vector tileset source. This tileset contains
   // point features representing museums. Each feature contains
@@ -39,50 +71,66 @@ map.on("load", () => {
   // Add the Mapbox Terrain v2 vector tileset. Read more about
   // the structure of data in this tileset in the documentation:
   // https://docs.mapbox.com/vector-tiles/reference/mapbox-terrain-v2/
-  map.addSource("contours", {
-    type: "vector",
-    url: "mapbox://mapbox.mapbox-terrain-v2",
-  });
-  map.addLayer({
-    id: "contours",
-    type: "line",
-    source: "contours",
-    "source-layer": "contour",
-    layout: {
-      // Make the layer visible by default.
-      visibility: "visible",
-      "line-join": "round",
-      "line-cap": "round",
-    },
-    paint: {
-      "line-color": "#877b59",
-      "line-width": 1,
-    },
-  });
-  map.addSource("my-geojson-file", {
+
+  map.addSource("fish.geojson", {
     type: "geojson",
-    data: "../data/DCSMM2018_D11C1.3.geojson",
+    data: "../data/fish.geojson",
+  });
+  /* Add Layer for heatmap points */
+
+  map.addLayer({
+    id: "Poissons",
+    type: "fill",
+    source: "fish.geojson",
+    layout: {},
+    paint: {
+      "fill-color": "#088",
+      "fill-opacity": 0.5,
+    },
+  });
+
+  map.addSource("marine_mammal.geojson", {
+    type: "geojson",
+    data: "../data/marine_mammal.geojson",
   });
 
   map.addLayer({
-    id: "points",
-    type: "circle",
-    source: "my-geojson-file",
+    id: "Mammifères marins",
+    type: "fill",
+    source: "marine_mammal.geojson",
+    layout: {},
     paint: {
-      "circle-color": "red",
+      "fill-color": "#f00",
+      "fill-opacity": 0.5,
     },
   });
+
+  // map.addSource("decibels.geojson", {
+  //   type: "geojson",
+  //   data: "../data/decibels.geojson",
+  // });
+
+  // map.addLayer({
+  //   id: "Niveau sonore",
+  //   type: "heatmap",
+  //   source: "decibels.geojson",
+  //   paint: {
+  //   },
+  // });
 });
 
 // After the last frame rendered before the map enters an "idle" state.
 map.on("idle", () => {
   // If these two layers were not added to the map, abort
-  if (!map.getLayer("contours") || !map.getLayer("points")) {
+  if (
+    !map.getLayer("Poissons") ||
+    !map.getLayer("Mammifères marins")
+  ) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ["contours", "points"];
+  const toggleableLayerIds = ["Poissons", "Mammifères marins"];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
@@ -120,16 +168,3 @@ map.on("idle", () => {
     layers.appendChild(link);
   }
 });
-// create a marker for the whales's location
-const whaleMarker = new mapboxgl.Marker()
-    .setLngLat([-1.32, 46.13]) // set the marker's position
-    .addTo(map); // add the marker to the map
-
-// listen for clicks on the whale marker
-whaleMarker.on('click', function() {
-    // when the marker is clicked, add some data to the "sound-effect" div
-    document.getElementById('sound-effect').innerHTML = '<b>Lorem Ipsum</b>';
-})
-    
-
-
