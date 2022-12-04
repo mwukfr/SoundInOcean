@@ -42,10 +42,24 @@ whaleMarker.on('click', function() {
 */
 
 // Create a marker and set its coordinates.
-const whaleMarker = new mapboxgl.Marker()
-  .setLngLat([-1.8, 45.73])
-  .addTo(map);
+// const whaleMarker = new mapboxgl.Marker()
+//   .setLngLat([-1.8, 45.73])
+//   .addTo(map);
 
+const el = document.createElement('div');
+const width = 50;
+const height = 50;
+el.className = 'marker';
+el.style.backgroundImage = `url(../img/boat2.png)`;
+el.style.width = `${width}px`;
+el.style.height = `${height}px`;
+el.style.backgroundSize = '100%';
+  
+  
+// Add markers to the map.
+new mapboxgl.Marker(el)
+.setLngLat([-1.8, 45.73])
+.addTo(map);
 /* POPUP
 // Create a popup and set its content.
 const popup = new mapboxgl.Popup()
