@@ -9,7 +9,6 @@ const map = new mapboxgl.Map({
   zoom: 11, // starting zoom
 });
 
-map.addControl(new mapboxgl.NavigationControl());
 
 var toggle = document.querySelector(".toggle-sidebar");
 var sidebar = document.querySelector(".sidebar");
@@ -105,18 +104,143 @@ map.on("load", () => {
     },
   });
 
-  // map.addSource("decibels.geojson", {
-  //   type: "geojson",
-  //   data: "../data/decibels.geojson",
-  // });
 
-  // map.addLayer({
-  //   id: "Niveau sonore",
-  //   type: "heatmap",
-  //   source: "decibels.geojson",
-  //   paint: {
-  //   },
-  // });
+
+ 
+
+  map.addSource("safe_zone_5_noeuds.geojson", {
+    type: "geojson",
+    data: "../data/safe_zone_5_noeuds.geojson",
+  });
+
+  map.addLayer({
+    id: "Safe zone 5 noeuds",
+    type: "heatmap",
+    source: "safe_zone_5_noeuds.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(0,255,0,0)",
+        1,
+        "rgba(0,255,0,0.5)",
+      ],
+
+    },
+  });
+
+  map.addSource("hurt_zone_5_noeuds.geojson", {
+    type: "geojson",
+    data: "../data/hurt_zone_5_noeuds.geojson",
+  });
+
+  map.addLayer({
+    id: "Hurt zone 5 noeuds",
+    type: "heatmap",
+    source: "hurt_zone_5_noeuds.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(255,100,0,0)",
+        1,
+        "rgba(255, 255, 0, 0.5)",
+      ],
+    },
+  });
+
+  map.addSource("dead_zone_5_noeuds.geojson", {
+    type: "geojson",
+    data: "../data/dead_zone_5_noeuds.geojson",
+  });
+
+  map.addLayer({
+    id: "Dead zone 5 noeuds",
+    type: "heatmap",
+    source: "dead_zone_5_noeuds.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(255,0,0,0)",
+        1,
+        "rgba(255,0,0,0.5)",
+      ],
+    },
+  });
+
+    map.addSource("safe_zone_10_noeuds.geojson", {
+    type: "geojson",
+    data: "../data/safe_zone_10_noeuds.geojson",
+  });
+
+  map.addLayer({
+    id: "Safe zone 10 noeuds",
+    type: "heatmap",
+    source: "safe_zone_10_noeuds.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(0,255,0,0)",
+        1,
+        "rgba(0,255,0,0.5)",
+      ],
+
+    },
+  });
+
+  map.addSource("hurt_zone_10_noeuds.geojson", {
+    type: "geojson",
+    data: "../data/hurt_zone_10_noeuds.geojson",
+  });
+
+  map.addLayer({
+    id: "Hurt zone 10 noeuds",
+    type: "heatmap",
+    source: "hurt_zone_10_noeuds.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(255,100,0,0)",
+        1,
+        "rgba(255, 255, 0, 0.5)",
+      ],
+    },
+  });
+
+  map.addSource("dead_zone_10_noeuds.geojson", {
+    type: "geojson",
+    data: "../data/dead_zone_10_noeuds.geojson",
+  });
+
+  map.addLayer({
+    id: "Dead zone 10 noeuds",
+    type: "heatmap",
+    source: "dead_zone_10_noeuds.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(255,0,0,0)",
+        1,
+        "rgba(255,0,0,0.5)",
+      ],
+    },
+  });
 });
 
 // After the last frame rendered before the map enters an "idle" state.
@@ -124,13 +248,28 @@ map.on("idle", () => {
   // If these two layers were not added to the map, abort
   if (
     !map.getLayer("Poissons") ||
-    !map.getLayer("Mammifères marins")
+    !map.getLayer("Mammifères marins") ||
+    !map.getLayer("Hurt zone 5 noeuds") ||
+    !map.getLayer("Dead zone 5 noeuds") ||
+    !map.getLayer("Safe zone 5 noeuds") ||
+    !map.getLayer("Hurt zone 10 noeuds") ||
+    !map.getLayer("Dead zone 10 noeuds") ||
+    !map.getLayer("Safe zone 10 noeuds")
   ) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ["Poissons", "Mammifères marins"];
+  const toggleableLayerIds = [
+    "Poissons",
+    "Mammifères marins",
+    "Dead zone 5 noeuds",
+    "Hurt zone 5 noeuds",
+    "Safe zone 5 noeuds",
+    "Dead zone 10 noeuds",
+    "Hurt zone 10 noeuds",
+    "Safe zone 10 noeuds",
+  ];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
