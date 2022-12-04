@@ -249,6 +249,8 @@ map.on("load", () => {
 
   map.setLayoutProperty("Poissons", "visibility", "none");
   map.setLayoutProperty("Mammifères marins", "visibility", "none");
+
+  
 });
 
 // After the last frame rendered before the map enters an "idle" state.
