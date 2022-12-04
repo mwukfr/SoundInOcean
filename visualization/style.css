@@ -3,6 +3,12 @@ body {
   padding: 0;
 }
 
+html,body,#container,#map {
+  height:100%;
+  min-height:100%;
+  max-height:100%;
+}
+
 h3 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
   "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -21,7 +27,7 @@ h4:hover {
   cursor: pointer;
 }
 
-nav{
+.first-theme {
   display: none;
 }
 
@@ -120,8 +126,18 @@ nav{
   background: #3074a4;
 }
 
-#container {
-    display: flex;
+/*
+#left-container {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  flex: 7 0 70%;
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
 }
 
 #right-container {
@@ -157,28 +173,6 @@ nav{
   background-color: #F4F2F2;
   padding: 1% 0 1% 0;
 }
-#top a {
-  font-size: 20px;
-  color: #404040;
-  display: inline;
-  padding: 0;
-  padding: 10px;
-  text-decoration: none;
-  text-align: center;
-  /* Add a hover effect to make the navbar more engaging */
-  transition: 0.2s;
-}
-
-#top a:hover {
-  background-color: #e6e6e6;
-  cursor: pointer;
-}
-
-#top a:nth-of-type(1), #top a:nth-of-type(2) {
-  border-right: 1px solid;
-  /* Add rounded corners to the navbar links */
-  border-radius: 5px;
-}
 
 #top a {
   font-size: 20px;
@@ -188,9 +182,10 @@ nav{
   padding: 10px;
   text-decoration: none;
   text-align: center;
+  padding-right: 14px;
 }
 
-#top a:nth-of-type(1), #top a:nth-of-type(2) {
+#top a:nth-of-type(1), #top a:nth-of-type(2), #top a:nth-of-type(3) {
   border-right: 1px solid;
 }
 
@@ -200,27 +195,27 @@ nav{
 }
 
 #left-container {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    flex: 7 0 70%;
-    max-width: 70%;
-    display: flex;
-    flex-direction: column;
+  flex: 1 1 70%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
 }
 
-#left-container > div:first-child {
-    /* This element should take up 95% of the container's height */
-    flex: 0.1 0 1%;
-    border-bottom: 1px solid #ccc;
+#right-container {
+  flex: 1 1 30%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
 }
-#left-container > div:last-child {
-    /* This element should take up the remaining 5% of the container's height */
-    flex: 9.9 0 99%;
-}
+
 
 #right-container > div:first-child {
   /* This element should take up 60% of the container's height */
@@ -234,34 +229,12 @@ nav{
   border-left: 1px solid #ccc;
 }
 
-button {
-    /* Use a consistent font, color, and size for all buttons */
-    font-family: sans-serif;
-    color: #333;
-    font-size: 14px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    border-radius: 4px;
+/*
+nav {
+  z-index: 20;
+  background-color: #333;
+  height: 10%;
+  left: 50%;
+  text-align: center;
 }
-
-/* Use a button-specific class to style the buttons */
-button.nice-button {
-    /* Set the button's background color and add some padding */
-    background-color: #eee;
-    padding: 10px 20px;
-}
-/* Use the :hover and :active pseudo-classes to add hover and active styles */
-nice-button:hover {
-background-color: #ddd;
-}
-nice-button:active {
-background-color: #ccc;
-}
-
-#about-CriQUIET {
-  display: flex;
-  flex-direction: row;
-}
-
-.about-us-column {
-  flex: 1;
-}
+*/

@@ -46,11 +46,12 @@ whaleMarker.on('click', function() {
 // Create a marker and set its coordinates.
 const whaleMarker = new mapboxgl.Marker()
   .setLngLat([-1.32, 46.12])
-  .addTo(map)
-  .on('click', function() {
-    document.getElementById('markerInfo').innerHTML = "Whale sound";
-  });
+  .addTo(map);
 
+whaleMarker.on('click', function() {
+  console.log("Whale clicked");
+  document.getElementById('markerInfo').innerHTML = 'Marker was clicked!';
+});
 
 /* POPUP
 // Create a popup and set its content.
