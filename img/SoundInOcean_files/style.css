@@ -205,13 +205,13 @@ nav {
 
 #right-container > div:first-child {
   /* This element should take up 60% of the container's height */
-  flex: 5 0 50%;
+  flex: 6 0 60%;
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
 }
 #right-container > div:last-child {
   /* This element should take up the remaining 40% of the container's height */
-  flex: 5 0 50%;
+  flex: 4 0 40%;
   border-left: 1px solid #ccc;
 }
 
@@ -374,27 +374,45 @@ h2 {
   border-left: 2px solid white;
 }
 
-#g-fish i {
+.grid-container-0, .grid-container-1 {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+.grid-item-frise-g, .grid-item-frise-y, .grid-item-frise-r {
+  border-right: 1px solid black;
+  text-align: center;
+}
+
+.grid-item-frise-db {
+  border-right: 1px solid black;
+  max-width: 100px;
+  text-align: center;
+}
+
+.grid-container-2 {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+.grid-item-frise-g i {
   font-size: 20px;
   color: green;
 }
 
-#y-fish i {
+.grid-item-frise-y i {
   font-size: 20px;
   color: yellow;
 }
 
-#r-fish i {
+.grid-item-frise-r i {
   font-size: 20px;
   color: red;
 }
 
-tr {
-  text-align: center;
-  align-items: center;
-}
-
-td {
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;;
+.grid-item-frise-db i, .grid-item-frise-g i, .grid-item-frise-y i, .grid-item-frise-r i {
+  max-width: 25% !important;
 }
