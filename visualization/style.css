@@ -9,9 +9,25 @@ html,body,#container,#map {
   max-height:100%;
 }
 
+#logo {
+  background-color: white;
+  border-bottom-right-radius: 60%;
+  max-width: 7em;
+  position: absolute;
+  z-index: 1;
+  filter: drop-shadow(1px 1px 1px white);
+}
+
+#logoSidebar {
+  max-width: 5em;
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+}
+
 h3 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
 }
 
@@ -19,22 +35,26 @@ h4 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: large;
-  padding: 10px;
+  padding-left: 10px;
 }
 
-h4:hover {
+.toggle-first-theme:hover {
   background-color: #fff;
   cursor: pointer;
 }
 
-.first-theme {
+.toggle-first-theme h4, .toggle-first-theme i {
+  display: inline-block;
+}
+
+nav {
   display: none;
 }
 
 /*Sidebar for buttons */
 .sidebar {
   width: 150px;
-  z-index: 1;
+  z-index: 2;
   background-color: #eee;
   position: fixed;
   left: 0;
@@ -46,7 +66,7 @@ h4:hover {
 .toggle-sidebar {
   position: absolute;
   z-index: 2;
-  top: 10px;
+  top: 200px;
   left: 0;
   cursor: pointer;
   background-color: #3378aa;
@@ -71,15 +91,13 @@ h4:hover {
   left: 150px;
 }
 
-.click-toggle-theme{
+.click-toggle-theme {
   background-color: #fff;
 }
 
-
-.show-first-theme{
+.show-first-theme {
   display: block;
 }
-
 
 #menu2 {
   background-color: #3378aa;
@@ -101,7 +119,7 @@ h4:hover {
 
 #menu a {
   font-size: 20x;
-  border-radius:  10px;
+  border-radius: 10px;
   color: #404040;
   display: block;
   margin: 10px 20px;
@@ -138,6 +156,10 @@ h4:hover {
   max-width: 70%;
   display: flex;
   flex-direction: column;
+}
+
+#container {
+  display: flex;
 }
 
 #right-container {
@@ -229,12 +251,161 @@ h4:hover {
   border-left: 1px solid #ccc;
 }
 
-/*
-nav {
-  z-index: 20;
-  background-color: #333;
-  height: 10%;
-  left: 50%;
+button {
+  /* Use a consistent font, color, and size for all buttons */
+  font-family: sans-serif;
+  color: #333;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Use a button-specific class to style the buttons */
+button.nice-button {
+  /* Set the button's background color and add some padding */
+  background-color: #eee;
+  padding: 10px 20px;
+}
+/* Use the :hover and :active pseudo-classes to add hover and active styles */
+nice-button:hover {
+  background-color: #ddd;
+}
+nice-button:active {
+  background-color: #ccc;
+}
+
+#about-CriQUIET {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-us-column {
+  flex: 1;
+}
+
+/* Page a propos */
+#first-section-propos {
+  background-image: url("../img/wallpaper_hackathon.jpg");
+  height: 80%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 5px #888888;
+  border-radius: 12px;
+  margin: 100px auto;
+}
+
+#first-section-propos-content {
   text-align: center;
 }
-*/
+
+h1 {
+  color: black;
+  font-size: 50px;
+  padding-top: 50px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  color: black;
+  font-size: 30px;
+  padding-top: 50px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#first-section-propos-content h2 {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#first-section-propos-content, #second-section-propos-content p {
+  color: white;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.grid-item:nth-of-type(2), .grid-item:nth-of-type(3) {
+  border-left: 2px solid white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+#second-section-propos {
+  background-color: #0077b6;
+  height: 80%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 5px #888888;
+  border-radius: 12px;
+  margin: 100px auto;
+  padding: 50px 0 50px 0;
+}
+
+#second-section-propos-content {
+  text-align: center;
+  margin: 20px;
+  font-size: 20px;
+  color: white;
+}
+
+#first-section-contributions{
+  background-color: #0077b6;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 5px #888888;
+  border-radius: 12px;
+  margin: 70px auto;
+}
+
+#first-section-contributions-content{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+#second-section-contributions{
+  background-color: #0077b6;
+  height: 80%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 5px #888888;
+  border-radius: 12px;
+  margin: 100px auto;
+}
+
+#contributions-grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 10px;
+}
+
+#contributions-grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+}
+
+#contributions-grid-item:nth-of-type(2), #contributions-grid-item:nth-of-type(3) {
+  border-left: 2px solid white;
+}
