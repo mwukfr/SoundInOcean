@@ -105,18 +105,76 @@ map.on("load", () => {
     },
   });
 
-  // map.addSource("decibels.geojson", {
-  //   type: "geojson",
-  //   data: "../data/decibels.geojson",
-  // });
 
-  // map.addLayer({
-  //   id: "Niveau sonore",
-  //   type: "heatmap",
-  //   source: "decibels.geojson",
-  //   paint: {
-  //   },
-  // });
+
+ 
+
+  map.addSource("safe_zone.geojson", {
+    type: "geojson",
+    data: "../data/safe_zone.geojson",
+  });
+
+  map.addLayer({
+    id: "Safe zone",
+    type: "heatmap",
+    source: "safe_zone.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(0,255,0,0)",
+        1,
+        "rgba(0,255,0,0.5)",
+      ],
+
+    },
+  });
+
+  map.addSource("hurt_zone.geojson", {
+    type: "geojson",
+    data: "../data/hurt_zone.geojson",
+  });
+
+  map.addLayer({
+    id: "Hurt zone",
+    type: "heatmap",
+    source: "hurt_zone.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(255,100,0,0)",
+        1,
+        "rgba(255, 255, 0, 0.5)",
+      ],
+    },
+  });
+
+  map.addSource("dead_zone.geojson", {
+    type: "geojson",
+    data: "../data/dead_zone.geojson",
+  });
+
+  map.addLayer({
+    id: "Dead zone",
+    type: "heatmap",
+    source: "dead_zone.geojson",
+    paint: {
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0.8,
+        "rgba(255,0,0,0)",
+        1,
+        "rgba(255,0,0,0.5)",
+      ],
+    },
+  });
 });
 
 // After the last frame rendered before the map enters an "idle" state.
@@ -124,13 +182,22 @@ map.on("idle", () => {
   // If these two layers were not added to the map, abort
   if (
     !map.getLayer("Poissons") ||
-    !map.getLayer("Mammifères marins")
+    !map.getLayer("Mammifères marins") ||
+    !map.getLayer("Hurt zone") ||
+    !map.getLayer("Dead zone") ||
+    !map.getLayer("Safe zone")
   ) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ["Poissons", "Mammifères marins"];
+  const toggleableLayerIds = [
+    "Poissons",
+    "Mammifères marins",
+    "Hurt zone",
+    "Dead zone",
+    "Safe zone",
+  ];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
