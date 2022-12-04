@@ -243,6 +243,12 @@ map.on("load", () => {
       ],
     },
   });
+  map.setLayoutProperty("Dead zone 10 noeuds", "visibility", "none");
+  map.setLayoutProperty("Hurt zone 10 noeuds", "visibility", "none");
+  map.setLayoutProperty("Safe zone 10 noeuds", "visibility", "none");
+
+  map.setLayoutProperty("Poissons", "visibility", "none");
+  map.setLayoutProperty("Mammifères marins", "visibility", "none");
 });
 
 // After the last frame rendered before the map enters an "idle" state.
@@ -258,9 +264,6 @@ map.on("idle", () => {
   // define a variable to track the current state of the layers
   let layersVisible = false;
 
-  map.setLayoutProperty("Dead zone 10 noeuds", "visibility", "none");
-  map.setLayoutProperty("Hurt zone 10 noeuds", "visibility", "none");
-  map.setLayoutProperty("Safe zone 10 noeuds", "visibility", "none");
   
   // define the function to toggle the visibility of the layers
   function toggleLayer5knots() {
