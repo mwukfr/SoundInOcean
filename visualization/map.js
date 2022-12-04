@@ -7,7 +7,7 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/mapbox/streets-v12", // style URL
   center: [-1.57, 46.02], // starting position [lng, lat]
   zoom: 9, // starting zoom
-  interactive: false
+  //interactive:false,
 });
 
 
@@ -27,10 +27,34 @@ toggleFirstTheme.addEventListener("click", function () {
   toggleFirstTheme.classList.toggle("click-toggle-theme");
 });
 
+/*/ create a marker for the whales's location
+const whaleMarker = new mapboxgl.Marker()
+    .setLngLat([-1.32, 46.13]) // set the marker's position
+    .addTo(map); // add the marker to the map
+
+// listen for clicks on the whale marker
+whaleMarker.on('click', function() {
+    // when the marker is clicked, add some data to the div that has "sound-effect" as an id
+    console.log("Whale clicked");
+    //document.getElementById('markerInfo').innerHTML = "Whale sound";
+    document.querySelector('#markerInfo').innerHTML = 'Hello, I am a whale!';
+})
+*/
+
 // Create a marker and set its coordinates.
-const boat1Marker = new mapboxgl.Marker()
+const whaleMarker = new mapboxgl.Marker()
   .setLngLat([-1.8, 45.73])
   .addTo(map);
+
+/* POPUP
+// Create a popup and set its content.
+const popup = new mapboxgl.Popup()
+  .setHTML("<p>Hello World!</p>")
+  .addTo(map);
+
+// Set the marker's popup.
+whaleMarker.setPopup(popup);
+*/
 
 map.on("load", () => {
   // Add a custom vector tileset source. This tileset contains
@@ -68,7 +92,7 @@ map.on("load", () => {
   });
 
   map.addLayer({
-    id: "Mammifères Marins",
+    id: "Mammifères marins",
     type: "fill",
     source: "marine_mammal.geojson",
     layout: {},
@@ -77,6 +101,9 @@ map.on("load", () => {
       "fill-opacity": 0.5,
     },
   });
+
+
+
  
 
   map.addSource("safe_zone_5_noeuds.geojson", {
